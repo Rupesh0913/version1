@@ -1,33 +1,136 @@
-#include<stdio.h>
-int main()
-{
-	int a[10],i,low,high,mid,size,ele;
-	printf("Enter the size of array:-");
-	scanf("%d",&size);
-	printf("Enter the numbers in array:");
-	for(i=0;i<size;i++)
-	scanf("%d",&a[i]);
-	printf("Enter the element you want to search:");
-	scanf("%d",&ele);
-	low=0;
-	high=size-1;
-	mid=(low+high)/2;
-	do
-	{
-		if(a[mid]==ele)
-		{
-			printf("Searched element is:%d\n",ele);
-			printf("Location of the element is:%d\n",mid+1);
-			break;
-		}
-		else if(a[mid]<=ele)
-		low=mid+1;
-		else
-		high=mid-1;
-		mid=(low+high)/2;
-	}
-	while(low<=high);
-	if(low>high)
-	printf("Element not found....\n");
-	return 0;
-}
+#include <bits/stdc++.h>  
+using namespace std; 
+  
+struct Node { 
+    int data; 
+    struct Node* link; 
+}; 
+struct Node* top; 
+   
+void push(int data) 
+{ 
+    // create new node temp and allocate memory 
+    struct Node* temp; 
+    temp = new Node(); 
+  
+    // check if stack (heap) is full. Then inserting an element would 
+    // lead to stack overflow 
+    if (!temp) { 
+        cout << "\nHeap Overflow"; 
+        exit(1); 
+    } 
+  
+    // initialize data into temp data field 
+    temp->data = data; 
+  
+    // put top pointer reference into temp link 
+    temp->link = top; 
+  
+    // make temp as top of Stack 
+    top = temp; 
+} 
+  
+// Utility function to check if the stack is empty or not 
+int isEmpty() 
+{ 
+    return top == NULL; 
+} 
+  
+// Utility function to return top element in a stack 
+int peek() 
+{ 
+    // check for empty stack 
+    if (!isEmpty()) 
+        return top->data; 
+    else
+        exit(1); 
+} 
+  
+// Utility function to pop top  
+// element from the stack 
+  
+void pop() 
+{ 
+    struct Node* temp; 
+  
+    // check for stack underflow 
+    if (top == NULL) { 
+        cout << "\nStack Underflow" << endl; 
+        exit(1); 
+    } 
+    else { 
+        // top assign into temp 
+        temp = top; 
+  
+        // assign second node to top 
+        top = top->link; 
+  
+        // destroy connection between first and second 
+        temp->link = NULL; 
+  
+        // release memory of top node 
+        free(temp); 
+    } 
+} 
+  
+// Function to print all the  
+// elements of the stack  
+void display()  
+{ 
+    struct Node* temp; 
+  
+    // check for stack underflow 
+    if (top == NULL) { 
+        cout << "\nStack Underflow"; 
+        exit(1); 
+    } 
+    else { 
+        temp = top; 
+        while (temp != NULL) { 
+  
+            // print node data 
+            cout <<  temp->data << " "; 
+  
+            // assign temp link to temp 
+            temp = temp->link; 
+        } 
+    } 
+} 
+  
+// Driver Code 
+int main() 
+{ 
+	int n,a,i;
+ 	cout<<"Enter the length of the linklist you want to create:";
+ 	cin>>n;
+ 	cout<<"Enter the value: "<<"\n";
+ 	for(i=0;i<n;i++)
+ 	{
+		cin>>a;
+ 		push(a);
+ 	}
+    // push the elements of stack 
+    //push(11); 
+    //push(22); 
+    //push(33); 
+    //push(44); 
+  
+    // display stack elements 
+    display(); 
+  
+    // print top element of stack 
+    cout << "\nTop element is " <<  peek()<<"\n"; 
+  
+    // delete top elements of stack 
+    pop(); 
+    pop(); 
+  
+    // display stack elements 
+    display(); 
+  
+    // print top element of stack 
+    cout << "\nTop element is " << peek()<<"\n"; 
+    return 0; 
+  
+    // This code has been contributed by Striver  
+} 

@@ -1,8 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-insert_atP();
 struct node *head=NULL;
-
 struct node
 {
 	int data;
@@ -49,10 +47,10 @@ int main()
 	insert(2);
 	print();
 	
-	insert(3);
+	inseert(3);
 	print();
 	
-	insert_atP(2,2);
+	insert_atP(8,2);
 	print();
 	return 0;
 }
