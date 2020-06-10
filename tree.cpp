@@ -13,34 +13,17 @@ struct Node
 };
 
 
-void printPostOrder(struct Node *node)
+void printPostOrder(struct Node *node,int val)
 {
    if(node==NULL)
      return;
   printPostOrder(node->left);
   printPostOrder(node->right);
+  if(val==node);
+  
   cout<<node->data<<" ";
 }
 
-void printInOrder(struct Node *node)
-{
-   if(node==NULL)
-     return;
-  printInOrder(node->left);
-  cout<<node->data<<" ";
-  printInOrder(node->right);
-  
-}
-
-void printPreOrder(struct Node *node)
-{
-   if(node==NULL)
-     return;
-  cout<<node->data<<" ";
-  printPreOrder(node->left);
-  printPreOrder(node->right);
-  
-}
 
 
 int main()
