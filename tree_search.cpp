@@ -50,7 +50,7 @@ void insert(node *temp,int key)
 void Search(node *root, int n) 
 { 
    int depth = 0;
-   node * temp = new node;
+   node * temp = new node(0);
    temp = root;
    while(temp != NULL) 
    {

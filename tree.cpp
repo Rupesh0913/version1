@@ -13,14 +13,12 @@ struct Node
 };
 
 
-void printPostOrder(struct Node *node,int val)
+void printPostOrder(struct Node *node)
 {
    if(node==NULL)
      return;
   printPostOrder(node->left);
   printPostOrder(node->right);
-  if(val==node);
-  
   cout<<node->data<<" ";
 }
 
@@ -37,12 +35,8 @@ base->left->left=new Node(3);
 base->left->right=new Node(4);
 base->right->left=new Node(6);
 
-cout<<"\n";
-printPreOrder(base);
-cout<<"\n";
 printPostOrder(base);
 cout<<"\n";
-printInOrder(base);
 
 return 0;
 
